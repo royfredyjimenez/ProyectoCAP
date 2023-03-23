@@ -1,0 +1,15 @@
+{
+  "name": "z2985_cap_pro_fin",
+  "version": "1.0.0",
+  "description": "Proyect Sales Orders",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "scripts": {
+    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
+  },
+  "devDependencies": {}
+}

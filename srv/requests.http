@@ -1,0 +1,31 @@
+# Seleccionar orden
+GET http://localhost:4004/manage-orders/SalesOrders
+
+# Crear orden
+POST http://localhost:4004/manage-orders/SalesOrders HTTP/1.1
+Content-Type: application/json
+
+{            
+"Email": "email_prueba@prueba.es",
+"FirstName": "David",
+"LastName": "Garcia",
+"Country": "España",
+"CreatedOn": "2023-03-12",
+"OrderStatus": 1,
+"DeliveryDate": "2023-01-01T08:10:00Z",
+"ImageUrl": "/orders/webapp/assets/cliente_hombre_1.png"
+}
+
+# Borrar orden
+DELETE http://localhost:4004/manage-orders/Orders('client 1')
+
+#Actualizar orden
+PUT http://localhost:4004/manage-orders/Orders('client 1') HTTP/1.1
+Content-Type: application/json
+
+{
+   "OrderStatus": 1
+}
+
+
+
