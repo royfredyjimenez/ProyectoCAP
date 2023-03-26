@@ -4,7 +4,7 @@ define service CatalogService {
 
     entity Header as
         select from z2985.SalesOrders.Header {
-            Id,
+            ID,
             Email       @mandatory,
             FirstName,
             LastName,
@@ -18,7 +18,7 @@ define service CatalogService {
 
     entity Items  as
         select from z2985.SalesOrders.Items {
-            Id,
+            ID,
             Name,
             Description,
             ReleaseDate,

@@ -10,8 +10,7 @@ type ty_decimal : Decimal(16, 2);
 context SalesOrders {
 
     entity Header: cuid, managed {
-        key Id           : UUID;
-            Email        : String(65);
+        key Email        : String(65);
             FirstName    : String(30);
             LastName     : String(30);
             Country      : String;
@@ -24,7 +23,6 @@ context SalesOrders {
     };
 
     entity Items : cuid, managed {
-        Id               : UUID;
         Name             : localized String not null;
         Description      : localized String;
         ReleaseDate      : DateTime default $now;
