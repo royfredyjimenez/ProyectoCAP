@@ -1,5 +1,5 @@
 const cds = require("@sap/cds");
-const { Header } = cds.entities("com.schema");
+const { Header } = cds.entities("z2985_cap_pro_fin");
 
 module.exports = (srv) => {
 
