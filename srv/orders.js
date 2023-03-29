@@ -1,19 +1,19 @@
 const cds = require("@sap/cds");
-const { Header } = cds.entities("z2985_cap_pro_fin");
+const { Orders } = cds.entities("z2985_cap_pro_fin");
 
 module.exports = (srv) => {
 
     // ACTION READ
-    srv.on("READ", "Header", async (req) => {
-        return await SELECT.from(Header);
+    srv.on("READ", "GetOrders", async (req) => {
+        return await SELECT.from(Orders);
     });
 
     // ACTION CREATE
-    srv.on("CREATE", "Header", async (req) => {
+    srv.on("CREATE", "CreaOrders", async (req) => {
         let returnData = await cds
             .transaction(req)
             .run(
-                INSERT.into(Header).entries({
+                INSERT.into(Orders).entries({
                     Email: req.data.Email,
                     FirstName: req.data.FirstName,
                     LastName: req.data.LastName,
@@ -43,11 +43,11 @@ module.exports = (srv) => {
     });
 
     // ACTION UPDATE
-    srv.on("UPDATE", "Header", async (req) => {
+    srv.on("UPDATE", "SetOrders", async (req) => {
         let returnData = await cds
             .transaction(req)
             .run([
-                UPDATE(Header, req.data.Email).set({
+                UPDATE(Orders, req.data.Email).set({
                     OrderStatus: req.data.OrderStatus
                 }),
             ])
@@ -68,11 +68,11 @@ module.exports = (srv) => {
     });
 
     // ACTION DELETE
-    srv.on("DELETE", "Header", async (req) => {
+    srv.on("DELETE", "DelOrders", async (req) => {
         let returnData = await cds
             .transaction(req)
             .run(
-                DELETE.from(Header).where({
+                DELETE.from(Orders).where({
                     Email: req.data.Email,
                 })
             )
