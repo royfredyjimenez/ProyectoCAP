@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="ManageOrders" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="GetOrders" EntityType="ManageOrders.GetOrders">
+                    <NavigationPropertyBinding Path="to_Items" Target="Items"/>
+                </EntitySet>
+                <EntitySet Name="CreaOrders" EntityType="ManageOrders.CreaOrders">
+                    <NavigationPropertyBinding Path="to_Items" Target="Items"/>
+                </EntitySet>
+                <EntitySet Name="SetOrders" EntityType="ManageOrders.SetOrders">
+                    <NavigationPropertyBinding Path="to_Items" Target="Items"/>
+                </EntitySet>
+                <EntitySet Name="DelOrders" EntityType="ManageOrders.DelOrders">
+                    <NavigationPropertyBinding Path="to_Items" Target="Items"/>
+                </EntitySet>
+                <EntitySet Name="Items" EntityType="ManageOrders.Items">
+                    <NavigationPropertyBinding Path="to_Header" Target="GetOrders"/>
+                    <NavigationPropertyBinding Path="texts" Target="Items_texts"/>
+                    <NavigationPropertyBinding Path="localized" Target="Items_texts"/>
+                </EntitySet>
+                <EntitySet Name="Items_texts" EntityType="ManageOrders.Items_texts"/>
+            </EntityContainer>
+            <EntityType Name="GetOrders">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="Email"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="65" Nullable="false"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Country" Type="Edm.String"/>
+                <Property Name="CreatedOn" Type="Edm.Date"/>
+                <Property Name="DeliveryDate" Type="Edm.Date"/>
+                <Property Name="OrderStatus" Type="Edm.Int32"/>
+                <Property Name="ImageUrl" Type="Edm.String"/>
+                <NavigationProperty Name="to_Items" Type="Collection(ManageOrders.Items)" Partner="to_Header">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="CreaOrders">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="Email"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="65" Nullable="false"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Country" Type="Edm.String"/>
+                <Property Name="CreatedOn" Type="Edm.Date"/>
+                <Property Name="DeliveryDate" Type="Edm.Date"/>
+                <Property Name="OrderStatus" Type="Edm.Int32"/>
+                <Property Name="ImageUrl" Type="Edm.String"/>
+                <NavigationProperty Name="to_Items" Type="Collection(ManageOrders.Items)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="SetOrders">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="Email"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="65" Nullable="false"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Country" Type="Edm.String"/>
+                <Property Name="CreatedOn" Type="Edm.Date"/>
+                <Property Name="DeliveryDate" Type="Edm.Date"/>
+                <Property Name="OrderStatus" Type="Edm.Int32"/>
+                <Property Name="ImageUrl" Type="Edm.String"/>
+                <NavigationProperty Name="to_Items" Type="Collection(ManageOrders.Items)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="DelOrders">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="Email"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="65" Nullable="false"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Country" Type="Edm.String"/>
+                <Property Name="CreatedOn" Type="Edm.Date"/>
+                <Property Name="DeliveryDate" Type="Edm.Date"/>
+                <Property Name="OrderStatus" Type="Edm.Int32"/>
+                <Property Name="ImageUrl" Type="Edm.String"/>
+                <NavigationProperty Name="to_Items" Type="Collection(ManageOrders.Items)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Items">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <Property Name="ReleaseDate" Type="Edm.Date"/>
+                <Property Name="DiscontinuedDate" Type="Edm.Date"/>
+                <Property Name="Price" Type="Edm.Decimal" Scale="2" Precision="16"/>
+                <Property Name="Height" Type="Edm.Decimal" Scale="2" Precision="16"/>
+                <Property Name="Width" Type="Edm.Decimal" Scale="2" Precision="16"/>
+                <Property Name="Depth" Type="Edm.Decimal" Scale="2" Precision="16"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Scale="2" Precision="16"/>
+                <NavigationProperty Name="to_Header" Type="ManageOrders.GetOrders">
+                    <ReferentialConstraint Property="to_Header_ID" ReferencedProperty="ID"/>
+                    <ReferentialConstraint Property="to_Header_Email" ReferencedProperty="Email"/>
+                </NavigationProperty>
+                <Property Name="to_Header_ID" Type="Edm.Guid"/>
+                <Property Name="to_Header_Email" Type="Edm.String" MaxLength="65"/>
+                <NavigationProperty Name="texts" Type="Collection(ManageOrders.Items_texts)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="localized" Type="ManageOrders.Items_texts">
+                    <ReferentialConstraint Property="ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Items_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </EntityType>
+            <Annotations Target="ManageOrders.GetOrders/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                </Annotations>
+                <Annotations Target="ManageOrders.GetOrders/createdBy">
+                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                    <Annotation Term="Core.Immutable" Bool="true"/>
+                    <Annotation Term="Core.Computed" Bool="true"/>
+                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                        </Annotations>
+                        <Annotations Target="ManageOrders.GetOrders/modifiedAt">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                            </Annotations>
+                            <Annotations Target="ManageOrders.GetOrders/modifiedBy">
+                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                <Annotation Term="Core.Computed" Bool="true"/>
+                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                    </Annotations>
+                                    <Annotations Target="ManageOrders.CreaOrders/createdAt">
+                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                        <Annotation Term="Core.Immutable" Bool="true"/>
+                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                        </Annotations>
+                                        <Annotations Target="ManageOrders.CreaOrders/createdBy">
+                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                </Annotations>
+                                                <Annotations Target="ManageOrders.CreaOrders/modifiedAt">
+                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                    <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                    </Annotations>
+                                                    <Annotations Target="ManageOrders.CreaOrders/modifiedBy">
+                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                            <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                            </Annotations>
+                                                            <Annotations Target="ManageOrders.SetOrders/createdAt">
+                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                </Annotations>
+                                                                <Annotations Target="ManageOrders.SetOrders/createdBy">
+                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                        </Annotations>
+                                                                        <Annotations Target="ManageOrders.SetOrders/modifiedAt">
+                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                            </Annotations>
+                                                                            <Annotations Target="ManageOrders.SetOrders/modifiedBy">
+                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                    </Annotations>
+                                                                                    <Annotations Target="ManageOrders.DelOrders/createdAt">
+                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                        <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                        </Annotations>
+                                                                                        <Annotations Target="ManageOrders.DelOrders/createdBy">
+                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                </Annotations>
+                                                                                                <Annotations Target="ManageOrders.DelOrders/modifiedAt">
+                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                    </Annotations>
+                                                                                                    <Annotations Target="ManageOrders.DelOrders/modifiedBy">
+                                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                            </Annotations>
+                                                                                                            <Annotations Target="ManageOrders.Items/createdAt">
+                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="ManageOrders.Items/createdBy">
+                                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                                        </Annotations>
+                                                                                                                        <Annotations Target="ManageOrders.Items/modifiedAt">
+                                                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                                            </Annotations>
+                                                                                                                            <Annotations Target="ManageOrders.Items/modifiedBy">
+                                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                                                    </Annotations>
+                                                                                                                                    <Annotations Target="ManageOrders.Items/ReleaseDate">
+                                                                                                                                        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+                                                                                                                                    </Annotations>
+                                                                                                                                    <Annotations Target="ManageOrders.Items_texts/locale">
+                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>LanguageCode}"/>
+                                                                                                                                        </Annotations>
+                                                                                                                                    </Schema>
+                                                                                                                                </edmx:DataServices>
+                                                                                                                            </edmx:Edmx>

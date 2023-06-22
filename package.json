@@ -1,49 +1,58 @@
 {
-  "name": "z2985_cap_pro_fin",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^5",
-    "express": "^4",
-    "@sap/cds-odata-v2-adapter-proxy": "^1.8.4"
-  },
-  "devDependencies": {
-    "@sap/ux-specification": "^1.96.0",
-    "sqlite3": "^5.0.2"
-  },
-  "scripts": {
-    "start": "cds watch"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es2020": true,
-      "node": true,
-      "jest": true,
-      "mocha": true
+    "name": "z2985_cap_pro_fin",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap-cloud-sdk/http-client": "^3.2.0",
+        "@sap/cds": "^5",
+        "@sap/cds-odata-v2-adapter-proxy": "^1.8.4",
+        "express": "^4"
     },
-    "globals": {
-      "SELECT": true,
-      "INSERT": true,
-      "UPDATE": true,
-      "DELETE": true,
-      "CREATE": true,
-      "DROP": true,
-      "CDL": true,
-      "CQL": true,
-      "CXL": true,
-      "cds": true
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.7",
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5.0.2"
     },
-    "rules": {
-      "no-console": "off",
-      "require-atomic-updates": "off"
-    }
-  },
-  "sapux": [
-    "app/orders",
-    "app/orders"
-  ]
+    "scripts": {
+        "start": "cds watch",
+        "watch-orders_proyect": "cds watch --open orders_proyect/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy z2985_cap_pro_fin --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-orders_crud": "cds watch --open orders_crud/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "sapux": [
+        "app/orders",
+        "app/orders_proyect",
+        "app/orders_crud",
+        "app/orders_crud"
+    ]
 }
